@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem;
+    
+}
+
+.loading{
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 14rem;
+
+}
+.spinner{
+    height: 3rem;
+    width: 3rem;
+    border: .1rem solid white;
+    border-color: white transparent white transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite ;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

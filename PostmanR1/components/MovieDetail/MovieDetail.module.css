@@ -1,0 +1,167 @@
+.graphicContainer {
+  min-width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.images {
+  position: relative;
+
+  height: auto;
+  max-width: 100%;
+}
+
+.poster,
+.postertemp {
+  width: 100%;
+  height: auto;
+}
+
+.poster {
+  position: relative;
+  z-index: 1;
+  height: 22rem;
+  width: auto;
+}
+
+.postertemp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  transform: scale(1.05);
+  filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.info {
+  display: flex;
+  gap: 2rem;
+  margin-left: 3rem;
+  min-height: 70vh;
+  max-width: 80%;
+  z-index: 1;
+}
+.textdata {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.overview {
+  margin-top: 2rem;
+}
+.addinfo1 {
+  display: flex;
+  gap: 0.5rem;
+}
+.genre {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.bookmark {
+  display: flex;
+  align-items: center;
+}
+
+.bmicon {
+  margin-left: auto;
+}
+
+.reviewContainer {
+  margin-left: 3rem;
+}
+.rateSection {
+  display: flex;
+}
+.rate {
+  margin-left: auto;
+  border: solid 2px white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+}
+.rate:hover {
+  color: black;
+  background-color: white;
+  transition: 0.3s ease;
+}
+.rateStars {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  background-color: rgb(30, 30, 30);
+  border-radius: 2rem;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.optionlist {
+  background-color: rgb(30, 30, 30);
+  border-radius: 0.5rem;
+  position: fixed;
+  width: 80px;
+}
+
+.ratedMovie {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .info {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .poster {
+    height: auto;
+    max-width: 14rem;
+  }
+  .postertemp {
+    display: none;
+  }
+  .images {
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 3rem 1rem 1rem;
+    max-width: 100%;
+  }
+  .graphicContainer {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width:680px){
+    .rateSection{
+     display: block;
+     display: flex;
+     justify-content: left;
+    }
+    .rateStars{
+      margin-left: 0px;
+    }
+}
+
+@media screen and (max-width:485px) {
+  .addinfo1{
+    display: block;
+  }
+  
+}
