@@ -1,6 +1,6 @@
 import React from 'react'
 import NowPlaying from '../NowPlaying/NowPlaying'
-import HeroSection from '../HeroSection/HeroSection'
+
 import Navbar from '../Navbar/Navbar'
 import TopRated from '../TopRated/TopRated'
 import MovieList from '../MovieList/MovieList'

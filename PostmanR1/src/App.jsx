@@ -11,8 +11,8 @@ function App() {
 
   
   const [requestToken, setRequestToken] = useState(null)
-  const api_key = import.meta.env.VITE_API_KEY;
-  const auth_token = import.meta.env.VITE_AUTH_TOKEN;
+  const api_key = '86f344f270f2aecd81c4518e38cc8d5f';
+  const auth_token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NmYzNDRmMjcwZjJhZWNkODFjNDUxOGUzOGNjOGQ1ZiIsInN1YiI6IjY1YzM5OWI3Yjc2Y2JiMDE4NDEwMzRjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FwR7ehUIyuMm8mZeAQTwwv_AbIpj-erKoTFZS_phhcM';
 
   
 
