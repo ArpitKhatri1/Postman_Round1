@@ -8,5 +8,6 @@ A Movie Streaming site made for Postman Round 1 Task using React and TMDB API.
 4) Bookmark And Rating: Allow users to bookmark and add a rating to a flim. All the Bookmarked and Rated movies are displayed on their own seperate pages.
 5) Loading Indicator: Basic loading indicator implement which improves user experience while movies are fetch.
 6) Responsiveness: Entire website is made responsive.
+   
 
 The css/designing of website is still lacking due to me unable to come up with good designs which definitely need to be improved in the future. 
