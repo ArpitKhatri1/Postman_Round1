@@ -10,4 +10,4 @@ A Movie Streaming site made for Postman Round 1 Task using React and TMDB API.
 6) Responsiveness: Entire website is made responsive.
    
 
-The css/designing of website is still lacking due to me unable to come up with good designs which definitely need to be improved in the future. 
+The css/designing of website is still lacking due to my inability to come up with good designs which definitely need to be improved in the future. 
