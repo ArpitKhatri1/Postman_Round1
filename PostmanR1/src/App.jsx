@@ -9,11 +9,11 @@ import Review from '../components/Reviewss/Review'
 
 function App() {
 
-   //Change
+   
   
   const [requestToken, setRequestToken] = useState(null)
   
-  const auth_token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NmYzNDRmMjcwZjJhZWNkODFjNDUxOGUzOGNjOGQ1ZiIsInN1YiI6IjY1YzM5OWI3Yjc2Y2JiMDE4NDEwMzRjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FwR7ehUIyuMm8mZeAQTwwv_AbIpj-erKoTFZS_phhcM';
+  const auth_token = import.meta.env.VITE_AUTH_TOKEN;
 
   
 
