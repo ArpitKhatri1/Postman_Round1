@@ -19,7 +19,7 @@ function Bookmark() {
 
 
   async function GetBookmarks() {
-    const res = await fetch(`https://api.themoviedb.org/3/account/${gid}/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`, options)
+    const res = await fetch(`https://api.themoviedb.org/3/account/${gid}/favorite/movies`, options)
     const data = await res.json()
     setBookmarkList(data)
   }
@@ -28,6 +28,10 @@ function Bookmark() {
   }, [])
 
   console.log(bookmarkList)
+  bookmarkList.length == 0 ? console.log(true) : console.log(false)
+
+
+  
   return (
     <>
       <br /><br />
@@ -36,21 +40,24 @@ function Bookmark() {
 
       <div className={styles.container}>
         <br />
-        {bookmarkList && bookmarkList.results ? bookmarkList.results.map((ele) => {
-          return (
-            <div key={ele.id}>
-              <Link to={`/home/${ele.id}`}>
-
-                <Card backdrop_path={ele.poster_path}
-                  original_title={ele.original_title}
-                  release_year={ele.release_date}
-                  rating={ele.vote_average}
-                />
-
-              </Link >
-            </div>
-          )
-        }) : ""}
+        {bookmarkList.length == 0 ? (
+  <div className={styles.loading}>
+    <div className={styles.spinner}></div>
+  </div>
+) : (
+  bookmarkList.results.map((ele) => (
+    <div key={ele.id}>
+      <Link to={`/home/${ele.id}`}>
+        <Card
+          backdrop_path={ele.poster_path}
+          original_title={ele.original_title}
+          release_year={ele.release_date}
+          rating={ele.vote_average}
+        />
+      </Link>
+    </div>
+  ))
+)}
 
         { (bookmarkList && bookmarkList.results == 0) ? <h3>No Bookmarks</h3>: ""}
 

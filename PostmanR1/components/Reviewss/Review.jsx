@@ -19,9 +19,10 @@ function Review() {
     
     
       async function GetReviews() {
-        const res = await fetch(`https://api.themoviedb.org/3/account/${gid}/rated/movies?language=en-US&page=1&sort_by=created_at.asc`, options)
+        const res = await fetch(`https://api.themoviedb.org/3/account/${gid}/rated/movies`, options)
         const data = await res.json()
         setReviews(data)
+        console.log(data)
       }
 
   
@@ -40,7 +41,9 @@ function Review() {
 
 <div className={styles.rcontainer}>
   <br />
-  { reviews && reviews.results  ? reviews.results.map((ele) => {
+  { reviews == null ?  (<div className={styles.loading}>
+    <div className={styles.spinner}></div>
+  </div>) : reviews.results.map((ele) => {
     return (
       <div key={ele.id}>
         <Link to={`/home/${ele.id}`}>
@@ -54,7 +57,7 @@ function Review() {
         </Link >
       </div>
     )
-  }) : ""}
+  }) }
 
 { reviews != null && (reviews.results  == 0) ? <h3>No Reviews</h3>: ""}
 

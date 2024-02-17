@@ -13,9 +13,11 @@ function MovieDetail() {
 
     const [isFavourite, setIsFavourite] = useState(false)
     const [rateState, setRateState] = useState(false)
+   
 
-
-
+    
+   
+    
     const img_path = "https://image.tmdb.org/t/p/original"
 
     const params = useParams()
@@ -38,7 +40,7 @@ function MovieDetail() {
             .catch(err => console.error(err));
         setIsFavourite(true)
 
-        window.localStorage.setItem(movieDetails.id, true)
+        
 
     }
 
@@ -55,11 +57,12 @@ function MovieDetail() {
 
         fetch(`https://api.themoviedb.org/3/account/${gid}/favorite`, options)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then((data)=>{
+                console.log(data)
+                setIsFavourite(false)
+            })
             .catch(err => console.error(err));
-
-        setIsFavourite(false)
-        window.localStorage.removeItem(movieDetails.id)
+            
 
     }
 
@@ -81,26 +84,15 @@ function MovieDetail() {
     useEffect(() => {
         FetchMovie()
     }, [])
+    
 
-    function CheckFavourite() {
-        const status = window.localStorage.getItem(movieDetails.id)
-        status == "true" ? setIsFavourite("true") : ""
-    }
-
-    useEffect(() => {
-        { movieDetails != null ? CheckFavourite() : "" }
-    }, [movieDetails])
+    
 
     function showRating() {
         setRateState(!rateState)
 
     }
-    const [selectedOption, setSelectedOption] = useState('');
-
-    const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
-    }
-
+   
     const arr = [1,2,3,4,5]
 
     const [movieRating,setMovieRating] = useState(null)
@@ -122,21 +114,89 @@ function MovieDetail() {
             .catch(err => console.error(err));
 
         setMovieRating(ele)
-        setRateState(!rateState)
+        setRateState(false)
 
-        window.localStorage.setItem(`${movieDetails.id}r`,ele)
-
-    }
-
-    function checkRating(){
-        const ratingData  = window.localStorage.getItem(`${movieDetails.id}r`) 
-        setMovieRating(ratingData)
         
-    }
-    useEffect(()=>{
-        {movieDetails != null ? checkRating() : ""}
-    },[movieDetails])
 
+    }
+
+
+    async function checkBookmark(){
+
+        const options1 = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${auth_token}`
+            }
+          }
+       
+
+          const res = await fetch(`https://api.themoviedb.org/3/account/${gid}/favorite/movies`, options1)
+          const data = await res.json()
+          
+          data.results.forEach((ele)=>{
+            if (ele.id == movieDetails.id){
+                setIsFavourite(true)
+            }
+          })
+          
+
+    }
+
+    async function checkRated(){
+        const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${auth_token}`
+            }
+          };
+        
+        
+            const res = await fetch(`https://api.themoviedb.org/3/account/${gid}/rated/movies?language=en-US&page=1&sort_by=created_at.asc`, options)
+            const data = await res.json()
+            data.results.forEach((ele)=>{
+                if (ele.id == movieDetails.id){
+                    setMovieRating(ele.rating)
+                }
+              })
+          
+    }
+
+   {movieDetails != null ? setTimeout(checkRated,500): ""} 
+    
+        {movieDetails != null ? checkBookmark() : ""}
+
+    
+
+    
+
+  
+    async function deleteRating(){
+        const options = {
+            method: 'DELETE',
+            headers: {
+              accept: 'application/json',
+              'Content-Type': 'application/json;charset=utf-8',
+              Authorization: `Bearer ${auth_token}`
+            }
+          };
+          
+         const res  = await  fetch(`https://api.themoviedb.org/3/movie/${movieDetails.id}/rating`, options)
+        const data = await res.json()
+        setMovieRating(null)
+            
+            
+            
+            
+    }
+      
+   
+
+   
+    
+    
   
    
 
@@ -192,7 +252,9 @@ function MovieDetail() {
                                         
                                         <div className={styles.ratedMovie}>
                                             <b>Your Rating :-</b> {movieRating}{" "}<FaStar color='yellow' size=".8rem" />
+                                            
                                         </div>
+
                                         
                                         
                                     ) 

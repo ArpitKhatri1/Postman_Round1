@@ -8,6 +8,16 @@
   align-items: center;
 }
 
+a:hover{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:link{
+  color: white;
+  text-decoration: none;
+}
+
 .images {
   position: relative;
 
@@ -165,3 +175,4 @@
   }
   
 }
+
