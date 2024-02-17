@@ -167,12 +167,17 @@ a:link{
     .rateStars{
       margin-left: 0px;
     }
+    .rate{
+      margin-left: 0px;
+      max-width: 2rem;
+    }
 }
 
 @media screen and (max-width:485px) {
   .addinfo1{
     display: block;
   }
+ 
   
 }
 

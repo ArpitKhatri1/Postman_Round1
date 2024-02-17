@@ -173,24 +173,21 @@ function MovieDetail() {
     
 
   
-    async function deleteRating(){
-        const options = {
-            method: 'DELETE',
-            headers: {
-              accept: 'application/json',
-              'Content-Type': 'application/json;charset=utf-8',
-              Authorization: `Bearer ${auth_token}`
-            }
-          };
-          
-         const res  = await  fetch(`https://api.themoviedb.org/3/movie/${movieDetails.id}/rating`, options)
-        const data = await res.json()
-        setMovieRating(null)
-            
-            
-            
-            
-    }
+    
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    useEffect(() => {
+        function watchWidth() {
+            setWindowWidth(window.innerWidth)
+        }
+        window.addEventListener("resize", watchWidth)
+        return function () {
+            window.removeEventListener("resize", watchWidth)
+
+        }
+
+
+    }, [windowWidth])
       
    
 
@@ -232,13 +229,13 @@ function MovieDetail() {
                                     <div>
                                         {movieDetails.release_date}
                                     </div>
-                                    |
+                                    {windowWidth <= 485 ? "" : "|"}
                                     <div className={styles.genre}>{movieDetails.genres.map((ele) => {
                                         return (
                                             <span>{ele.name}</span>
                                         )
                                     })}</div>
-                                    |
+                                    {windowWidth <= 485 ? "" : "|"}
                                     <div>
                                         { Math.floor(movieDetails.runtime / 60)  != 0 ?`${Math.floor(movieDetails.runtime / 60)}h ${movieDetails.runtime % 60}m` : ""}
                                     </div>
@@ -248,6 +245,7 @@ function MovieDetail() {
                                     <div>
                                         <i> {movieDetails.tagline}</i>
                                     </div>
+                                    {windowWidth<=680 ? (<br/>) : ""}
                                     {movieRating != null ? (
                                         
                                         <div className={styles.ratedMovie}>
