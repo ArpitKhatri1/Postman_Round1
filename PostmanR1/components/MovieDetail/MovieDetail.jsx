@@ -7,9 +7,9 @@ import { FaRegBookmark } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 function MovieDetail() {
 
-    const auth_token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NmYzNDRmMjcwZjJhZWNkODFjNDUxOGUzOGNjOGQ1ZiIsInN1YiI6IjY1YzM5OWI3Yjc2Y2JiMDE4NDEwMzRjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FwR7ehUIyuMm8mZeAQTwwv_AbIpj-erKoTFZS_phhcM';
+    const auth_token = import.meta.env.VITE_AUTH_TOKEN
     const gid = window.localStorage.getItem("sessionToken")
-    const api_key = '86f344f270f2aecd81c4518e38cc8d5f';
+    const api_key = import.meta.env.VITE_API_KEY;
 
     const [isFavourite, setIsFavourite] = useState(false)
     const [rateState, setRateState] = useState(false)
@@ -65,22 +65,8 @@ function MovieDetail() {
 
 
     
-
    
-        const options = {
-            method: 'DELETE',
-            headers: {
-                accept: 'application/json',
-                'Content-Type': 'application/json;charset=utf-8',
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NmYzNDRmMjcwZjJhZWNkODFjNDUxOGUzOGNjOGQ1ZiIsInN1YiI6IjY1YzM5OWI3Yjc2Y2JiMDE4NDEwMzRjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FwR7ehUIyuMm8mZeAQTwwv_AbIpj-erKoTFZS_phhcM'
-            }
-        };
-
-        fetch(`https://api.themoviedb.org/3/movie/${1214314}/rating`, options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));
-    
+      
 
 
 

@@ -17,7 +17,7 @@ function Navbar() {
         setActiveMenu(!activeMenu)
     }
 
-    const api_key = '86f344f270f2aecd81c4518e38cc8d5f';
+    const api_key = import.meta.env.VITE_API_KEY;
     let [searchValue, setSearchValue] = useState("")
     let [searchResults, setSearchResults] = useState([])
 

@@ -151,8 +151,8 @@
 @media screen and (max-width:680px){
     .rateSection{
      display: block;
-     display: flex;
-     justify-content: left;
+    
+     
     }
     .rateStars{
       margin-left: 0px;

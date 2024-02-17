@@ -5,20 +5,9 @@ import styles from './Card.module.css'
 function Card({ backdrop_path, original_title, release_year,rating }) {
     const img_path = "https://image.tmdb.org/t/p/original"
 
-    const api_key = import.meta.env.VITE_API_KEY;
+  
 
-    const [value, setValue] = useState([])
-
-    async function FetchData() {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/12?api_key=${api_key}`)
-        const data = await res.json()
-        setValue(data)
-    }
-
-
-    useEffect(() => {
-        FetchData()
-    }, [])
+    
 
 
     return (
