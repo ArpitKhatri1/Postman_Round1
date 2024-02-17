@@ -38,9 +38,7 @@ function App() {
 
 
   useEffect(() => {
-    // if(window.localStorage.getItem("sessionToken") == null){
-      
-    // } 
+  
     FetchToken()
   }, [])
 
